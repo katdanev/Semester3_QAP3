@@ -1,0 +1,19 @@
+{
+  "name": "semester3_qap3",
+  "version": "1.0.0",
+  "description": "QAP 3 FullStack and DataBase",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.1.9",
+    "express": "^4.18.3",
+    "method": "^2.0.0",
+    "method-override": "^3.0.0",
+    "override": "^0.0.1",
+    "pg": "^8.11.3"
+  }
+}
