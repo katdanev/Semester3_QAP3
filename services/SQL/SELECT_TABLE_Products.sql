@@ -1,0 +1,1 @@
+SELECT id, name, description, price FROM public."Products" ORDER BY id DESC LIMIT 15;
