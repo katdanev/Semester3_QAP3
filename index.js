@@ -17,9 +17,8 @@ app.get('/', (req, res) => {  // Define a route for the root URL ('/')
 //const loginsRouter = require('./routes/products') // Import the 'loginsRouter' module 
 //app.use('/logins', loginsRouter); 
 
-//const apiRouter = require('./routes/api');  // Use the '/api' prefix for routes defined in the 'apiRouter' module
-
-//app.use('/api', apiRouter);
+const apiRouter = require('./routes/api');  // Use the '/api' prefix for routes defined in the 'apiRouter' module
+app.use('/api', apiRouter);
 
 app.use((req, res) => {  // Handle 404 errors by rendering the '404.ejs' template
   res.status(404).render('404');
