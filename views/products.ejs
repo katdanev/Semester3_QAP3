@@ -1,0 +1,28 @@
+<html lang="en">
+    <%- include('./partials/head.ejs') %>
+    <body>
+        <%- include('./partials/nav.ejs') %>
+        <div class="logins content">
+            <form action="/products" method="POST">
+                <b>Products: </b></br> 
+            <% if (theProducts.length > 0) { %>
+                <% theProducts.forEach(product => { %>
+                    <b><%= product.name %></b>
+                    <a href="/products/<%=product.id%>/edit?name=<%=product.name%>">edit</a>
+                    <a href="/products/<%=product.id%>/delete?name=<%=product.name%>">delete</a></br> 
+                    <% }) %>
+            <% } %>
+            </br><label>Add Product:</label></br>
+            <label>name:
+                <input type="text" id="userame" name="username" value="<%= locals.name %>" required>
+            </label>
+            <label>Description:
+                <input type="password" id="description" name="description" value="<%= locals.description %>" required>
+            </label>
+            </br>
+            <button>POST</button>
+        </form>
+        </div>
+    </body>
+    <%- include('./partials/foot.ejs') %>
+</html>

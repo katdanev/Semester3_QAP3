@@ -1,4 +1,4 @@
-
+//pg.products.dal.js
 const dal = require("./pg.shop_db"); // Import the connection pool from the DAL
 
 
@@ -36,10 +36,29 @@ var getProducts = function() {
   }); 
 };
 
+// get a product by id
+var getProductById = function(id) {
+  if(DEBUG) console.log("products.pg.dal.getProductById()");
+  return new Promise(function(resolve, reject) {
+    const sql = `SELECT id, name, description, price FROM public."Products" WHERE id = $1;`
+    dal.query(sql, [id], (err, result) => {
+      if (err) {
+        // logging should go here
+        if(DEBUG) console.log(err);
+        reject(err);
+      } else {
+        resolve(result.rows[0]);
+      }
+    }); 
+  }); 
+}
+
+
 
 
 module.exports = {
   addProduct,
-    getProducts
+    getProducts,
+    getProductById
  
 }
