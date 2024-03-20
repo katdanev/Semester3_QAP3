@@ -1,0 +1,17 @@
+
+<!-- product.ejs (views folder) -->
+<!-- This is the product page. It will display a product of the database. -->
+<html lang="en">
+    <%- include('./partials/head.ejs') %>
+    <body>
+        <%- include('./partials/nav.ejs') %>
+        <div class="login content">
+            <h2>Login:</h2>
+            <% if (aProduct.length > 0) { %>
+                <% var product = aProduct[0]; %>
+                <h3><%= product.name %> <%= product.description %>  <%= product.price %> </h3> 
+            <% } %>
+        </div>
+    </body>
+    <%- include('./partials/foot.ejs') %>
+</html>

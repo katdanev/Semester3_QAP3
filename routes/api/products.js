@@ -14,6 +14,24 @@ router.get('/', async (req, res) => {
     }
 });
 
+// Get a product by ID
+router.get('/:id', async (req, res) => {
+    if(DEBUG) console.log('ROUTE: /api/products/:id GET ' + req.url);
+    try {
+        let productId = req.params.id;
+        let product = await loginsDal.getProductById(productId);
+        if (product) {
+            res.json(product);
+        } else {
+            res.status(404).json({message: "Product not found", status: 404});
+        }
+    } catch {
+        // log this error to an error log file.
+        res.status(503).json({message: "Service Unavailable", status: 503});
+    }
+});
+
+
 module.exports = router;
 
 

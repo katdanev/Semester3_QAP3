@@ -5,7 +5,7 @@ if(DEBUG) {
 }
 
 // http://localhost:3000/api/products/
-const loginsRouter = require('./products')
-router.use('/products', loginsRouter); // ???????
+const productsRouter = require('./products')
+router.use('/products', productsRouter); // ???????
 
 module.exports = router;

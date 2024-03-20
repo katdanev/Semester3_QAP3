@@ -14,8 +14,8 @@ app.get('/', (req, res) => {  // Define a route for the root URL ('/')
   res.render('index.ejs', { name: 'KATERYNA' });  // Render the 'index.ejs' template with data (in this case, the name 'Peter')
 });
 
-//const loginsRouter = require('./routes/products') // Import the 'loginsRouter' module 
-//app.use('/logins', loginsRouter); 
+const productsRouter = require('./routes/products') // Import the 'loginsRouter' module 
+app.use('/products', productsRouter); 
 
 const apiRouter = require('./routes/api');  // Use the '/api' prefix for routes defined in the 'apiRouter' module
 app.use('/api', apiRouter);
