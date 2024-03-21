@@ -1,4 +1,6 @@
 //pg.products.dal.js
+// this page is for the data access layer for the products table
+// this is where we will write the SQL queries to interact with the database
 const dal = require("./pg.shop_db"); // Import the connection pool from the DAL
 
 
@@ -40,14 +42,14 @@ var getProducts = function() {
 var getProductById = function(id) {
   if(DEBUG) console.log("products.pg.dal.getProductById()");
   return new Promise(function(resolve, reject) {
-    const sql = `SELECT id, name, description, price FROM public."Products" WHERE id = $1;`
+    const sql = `SELECT name, description, price FROM public."Products" WHERE id = $1;`
     dal.query(sql, [id], (err, result) => {
       if (err) {
         // logging should go here
         if(DEBUG) console.log(err);
         reject(err);
       } else {
-        resolve(result.rows[0]);
+        resolve(result.rows);
       }
     }); 
   }); 
