@@ -14,10 +14,13 @@
             <% } %>
             </br><label>Add Product:</label></br>
             <label>name:
-                <input type="text" id="userame" name="username" value="<%= locals.name %>" required>
+                <input type="text" id="userame" name="name" value="<%= locals.name %>" required>
             </label>
             <label>Description:
-                <input type="password" id="description" name="description" value="<%= locals.description %>" required>
+                <input type="description" id="description" name="description" value="<%= locals.description %>" required>
+            </label>
+            <label>Price:
+                <input type="price" id="price" name="price" value="<%= locals.price %>" required>
             </label>
             </br>
             <button>POST</button>
