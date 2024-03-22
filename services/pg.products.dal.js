@@ -55,12 +55,41 @@ var getProductById = function(id) {
   }); 
 }
 
+var patchProduct = function(id, name, description, price) {
+  if(DEBUG) console.log("products.pg.dal.patchProduct()");
+  return new Promise(function(resolve, reject) {
+    const sql = `UPDATE public."Products" SET name=$2, description=$3, price=$4 WHERE id=$1;`;
+    dal.query(sql, [id, name, description, price], (err, result) => {
+      if (err) {
+          reject(err);
+        } else {
+          resolve(result.rows);
+        }
+    }); 
+  });
+};
 
+var deleteProduct = function(id) {
+  if(DEBUG) console.log("products.pg.dal.deleteProduct()");
+  return new Promise(function(resolve, reject) {
+    const sql = `DELETE FROM public."Products" WHERE id = $1;`;
+    dal.query(sql, [id], (err, result) => {
+      if (err) {
+          reject(err);
+        } else {
+          resolve(result.rows);
+        }
+    }); 
+  });
+};
 
 
 module.exports = {
   addProduct,
-    getProducts,
-    getProductById
+  getProducts,
+  getProductById,
+  patchProduct,
+  deleteProduct
+
  
 }

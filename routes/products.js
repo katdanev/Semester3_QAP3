@@ -19,11 +19,11 @@ router.get('/', async (req, res) => {
 
 router.get('/:id', async (req, res) => { // get a login by id
   // const aProduct = [ // temporary data test from memory not from  postgresql database
-  //   { name: 'example', description: 'example', price: 100}
+  //   { name: 'Pandora', description: 'ring', price: 100}
   // ];
   try {
       let aProduct = await productsDal.getProductById(req.params.id); // from postgresql
-    // if(DEBUG) console.table(aProduct);
+     if(DEBUG) console.table(aProduct);
       if (aProduct.length === 0)
           res.render('norecord')
       else
@@ -32,6 +32,18 @@ router.get('/:id', async (req, res) => { // get a login by id
       res.render('503');
   }
 });
+
+router.get('/:id/edit', async (req, res) => {
+  if(DEBUG) console.log('product.Edit : ' + req.params.id);
+  res.render('productPatch.ejs', {name: req.query.name,  description: req.query.description, price: req.query.price, theId: req.params.id}); // render loginPatch.ejs page! Create it!
+});
+
+router.get('/:id/delete', async (req, res) => {
+  if(DEBUG) console.log('product.Delete : ' + req.params.id);
+  res.render('productDelete.ejs', {name: req.query.name, theId: req.params.id}); // render loginDelete.ejs page! Create it!
+});
+
+
 
 router.post('/', async (req, res) => {
   if(DEBUG) console.log("products.POST");
@@ -43,6 +55,28 @@ router.post('/', async (req, res) => {
       // log this error to an error log file.
       res.render('503');
   } 
+});
+
+router.patch('/:id', async (req, res) => {
+  if(DEBUG) console.log('products.PATCH: ' + req.params.id);
+  try {
+      await productsDal.patchProduct(req.params.id, req.body.name, req.body.description, req.body.price);
+      res.redirect('/products/');
+  } catch {
+      // log this error to an error log file.
+      res.render('503');
+  }
+});
+
+router.delete('/:id', async (req, res) => {
+  if(DEBUG) console.log('products.DELETE: ' + req.params.id);
+  try {
+      await productsDal.deleteProduct(req.params.id);
+      res.redirect('/products/');
+  } catch {
+      // log this error to an error log file.
+      res.render('503');
+  }
 });
 
 module.exports = router
