@@ -8,8 +8,10 @@
             <% if (theProducts.length > 0) { %>
                 <% theProducts.forEach(product => { %>
                     <b><%= product.name %></b>
-                    <a href="/products/<%=product.id%>/edit?name=<%=product.name%>">edit</a>
-                    <a href="/products/<%=product.id%>/delete?name=<%=product.name%>">delete</a></br> 
+                    
+                    <a href="/products/<%=product.id%>/edit?name=<%=product.name%>&description=<%=product.description%>&price=<%=product.price%>">edit</a>
+                    <a href="/products/<%=product.id%>/delete?name=<%=product.name%>&description=<%=product.description%>&price=<%=product.price%>">delete</a></br> 
+
                     <% }) %>
             <% } %>
             </br><label>Add Product:</label></br>

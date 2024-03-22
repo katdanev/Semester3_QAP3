@@ -1,0 +1,19 @@
+<html lang="en">
+    <%- include('./partials/head.ejs') %>
+    <body>
+        <%- include('./partials/nav.ejs') %>
+        <div class="edit content">
+            <form action="/products/<%= locals.theId %>?_method=PATCH" method="POST">
+           
+                <label>Edit PRODUCT Fields:</br>
+                    <input type="text" name="name" value="<%= locals.name %>" required>
+                    <input type="text" name="description" value="<%= locals.description %>" required>
+                    <input type="number" name="price" value="<%= locals.price %>" required>
+
+                </label></br>
+                <button>PATCH</button>
+            </form>
+        </div>
+    </body>
+    <%- include('./partials/foot.ejs') %>
+</html>
