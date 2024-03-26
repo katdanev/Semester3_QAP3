@@ -1,5 +1,6 @@
 <html lang="en">
     <%- include('./partials/head.ejs') %>
+    <%- include('./partials/styles.ejs') %>
     <body>
         <%- include('./partials/nav.ejs') %>
         <div class="delete content">
@@ -7,7 +8,7 @@
                 <label>Are you sure you want to delete this Product?</br>
                     <input type="text" id="<%= locals.theId %>" name="product" value="<%= locals.name %>" readonly>
                 </label>
-                <button>DELETE</button>
+                <button >DELETE</button>
             </form>
         </div>
     </body>
